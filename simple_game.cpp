@@ -2,11 +2,9 @@
 #include "helpers.cpp"
 
 int main(int argc, char** argv) {
-
     int currentValue;
     int randNumber = 0;
-    std::string userName;
-    
+    std::string userName; 
     if (argc >= 2) {
         std::string _n = argv[1];
         const char* ptr2 = argv[2];
@@ -18,7 +16,6 @@ int main(int argc, char** argv) {
     else {
         randNumber = getRandomValue();
     } 
-    
     userName = getUserName();
     std::cout << "Enter your guess:" << std::endl;
     int i = 1;
@@ -37,13 +34,9 @@ int main(int argc, char** argv) {
 		}
         ++i;
 	} while(true);
-
-    if (writeScore(userName, i)) {
-        
+    if (writeScore(userName, i)) {    
         pretty_printer("Score recorded");
-        
     }
-
     readScoreTable();
     return 0;
 }

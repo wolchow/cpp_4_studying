@@ -2,16 +2,12 @@
 #include "helpers.h"
 
 int getRandomValue(unsigned int max_value = 100) {
-    
-
 	std::srand(std::time(nullptr)); // use current time as seed for random generator
-
 	const int randomValue = std::rand() % max_value;
 	return randomValue;
 }
 
 void pretty_printer (const std::string str, char decorator = '*') {
-	
 	int len = str.size(); //sizeof(str);
 	len > 1 ? len - 1 : len; 
     std::cout << std::string (len, decorator) << std::endl;
@@ -25,7 +21,6 @@ bool writeScore(std::string username, int attempts_count, const std::string file
 			std::cout << "Failed to open file for write: " << filename << "!" << std::endl;
 			return false;
 		}
-
 		// Append new results to the table:
 		out_file << username << ' ';
 		out_file << attempts_count;
@@ -39,10 +34,8 @@ bool readScoreTable(const std::string filename = "high_scores.txt") {
 			std::cout << "Failed to open file for read: " << filename << "!" << std::endl;
 			return false;
 		}
-
 		pretty_printer("*");
 		pretty_printer("High scores table:");
-
 		std::string username;
 		int high_score = 0;
 		while (true) {
@@ -52,11 +45,9 @@ bool readScoreTable(const std::string filename = "high_scores.txt") {
 			in_file >> high_score;
 			// Ignore the end of line symbol
 			in_file.ignore();
-
 			if (in_file.fail()) {
 				break;
 			}
-
 			// Print the information to the screen
 			std::cout << username << '\t\t' << high_score << std::endl;
 		}
@@ -67,13 +58,6 @@ std::string getUserName(){
     std::string userName;
     std::cout << "Hello! Please, enter your name:" << std::endl;
     std::cin >> userName;
-	// not reachable for some reason
-	// int cnt = 0;
-    // while (std::cin.fail()) {
-    //     if (cnt > 4) { std::cin.clear();}
-	// 	std::cout << "Bad value! Please enter again" << std::endl;
-    //     ++cnt;
-	// }
     return userName;
 }
 
